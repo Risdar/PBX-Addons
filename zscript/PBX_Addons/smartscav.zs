@@ -33,7 +33,7 @@ class SmartScavAmmoBase : CustomInventory
 		return 2;
 	}
 
-	void HandleAmmoTouch(Actor toucher, class<PB_Ammo> type, int amount, string spawnLabel)
+	void HandleAmmoTouch(Actor toucher, class<PB_Ammo> type, int amount)
 	{
 		if (!toucher || !toucher.player || toucher.health <= 0) return;
 
@@ -45,7 +45,14 @@ class SmartScavAmmoBase : CustomInventory
 		}
 
 		bNoInteraction = true;
-		SetStateLabel(ammoAmount == 1 ? spawnLabel : "PickupFull");
+		if(ammoAmount == 1){
+			SetStateLabel("SpawnPartial");
+			return;
+		} 
+		else{
+			SetStateLabel("PickupFull");
+			return;
+		}
 	}
 }
 
@@ -61,7 +68,7 @@ class Smartscav_Cells : SmartScavAmmoBase
 	override void Touch(Actor toucher)
 	{
 		super.Touch(toucher);
-		HandleAmmoTouch(toucher, "PB_Cell", 100, "SpawnCells");
+		HandleAmmoTouch(toucher, "PB_Cell", 100);
 	}
 	
 	States
@@ -75,7 +82,7 @@ class Smartscav_Cells : SmartScavAmmoBase
 	PickupFull:
 		TNT1 A 0 A_SpawnItemEx("PB_CellPack");
 		Stop;
-	SpawnCells:
+	SpawnPartial:
 		TNT1 A 0;
 		YELP F 15;
 		YELP F 10 {
@@ -105,7 +112,7 @@ class Smartscav_Shells : SmartScavAmmoBase
 	override void Touch(Actor toucher)
 	{
 		super.Touch(toucher);
-		HandleAmmoTouch(toucher, "PB_Shell", 12, "SpawnShells");
+		HandleAmmoTouch(toucher, "PB_Shell", 12);
 	}
 	States
 	{
@@ -118,7 +125,7 @@ class Smartscav_Shells : SmartScavAmmoBase
 	PickupFull:
 		TNT1 A 0 A_SpawnItemEx("PB_ShellBox");
 		Stop;
-	SpawnShells:
+	SpawnPartial:
 		SB0X A 15;
 		SB0X A 10 {
 			A_SpawnItemEx("PB_Shell",0,0,0,frandom(2,4),0,frandom(2,4),random(1,360));
@@ -143,7 +150,7 @@ class Smartscav_Rockets : SmartScavAmmoBase
 	override void Touch(Actor toucher)
 	{
 		super.Touch(toucher);
-		HandleAmmoTouch(toucher, "PB_RocketAmmo", 6, "SpawnRockets");
+		HandleAmmoTouch(toucher, "PB_RocketAmmo", 6);
 	}
 	States
 	{
@@ -156,7 +163,7 @@ class Smartscav_Rockets : SmartScavAmmoBase
 	PickupFull:
 		TNT1 A 0 A_SpawnItemEx("PB_RocketBox");
 		Stop;
-	SpawnRockets:
+	SpawnPartial:
 		BR0K A 15;
 		BR0K A 10 {
 			A_SpawnItemEx("PB_RocketAmmo",0,0,0,frandom(2,4),0,frandom(2,4),random(1,360));
@@ -186,7 +193,7 @@ class Smartscav_HighCal : SmartScavAmmoBase
 	override void Touch(Actor toucher)
 	{
 		super.Touch(toucher);
-		HandleAmmoTouch(toucher, "PB_HighCalMag", 60, "SpawnMags");
+		HandleAmmoTouch(toucher, "PB_HighCalMag", 60);
 	}
 
 	States
@@ -200,7 +207,7 @@ class Smartscav_HighCal : SmartScavAmmoBase
 	PickupFull:
 		TNT1 A 0 A_SpawnItemEx("PB_HighCalBox");
 		Stop;
-	SpawnMags:
+	SpawnPartial:
 		AMM0 A 15;
 		AMM0 A 10 {
 			A_SpawnItemEx("PB_HighCalMag",0,0,0,frandom(2,4),0,frandom(2,4),random(1,360));
@@ -228,7 +235,7 @@ class Smartscav_LowCal : SmartScavAmmoBase
 	override void Touch(Actor toucher)
 	{
 		super.Touch(toucher);
-		HandleAmmoTouch(toucher, "PB_LowCalMag", 60, "SpawnMags");
+		HandleAmmoTouch(toucher, "PB_LowCalMag", 60);
 	}
 
 	States
@@ -242,7 +249,7 @@ class Smartscav_LowCal : SmartScavAmmoBase
 	PickupFull:
 		TNT1 A 0 A_SpawnItemEx("PB_LowCalBox");
 		Stop;
-	SpawnMags:
+	SpawnPartial:
 		AMOK A 15;
 		AMOK A 10 {
 			A_SpawnItemEx("PB_LowCalMag",0,0,0,frandom(2,4),0,frandom(2,4),random(1,360));

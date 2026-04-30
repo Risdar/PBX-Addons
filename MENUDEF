@@ -8,23 +8,113 @@ OptionMenu "PBXAddons_Menu"
     Title "$PBXAddons_Settings"
 	Class "PB_OptionMenu"
 
-    StaticText "PBX Settings"
-    FlagOption "Enable Smart Scavenger",            "PBXAddons_SettingsFlags",    "OffOn", 0
-    FlagOption "Enable Helmet Drops",               "PBXAddons_SettingsFlags",    "OffOn", 1
-    FlagOption "Enable Damage Indicators",          "PBXAddons_SettingsFlags",    "OffOn", 2
-    FlagOption "Enable Damage Feedback",            "PBXAddons_SettingsFlags",    "OffOn", 3
-    FlagOption "Enable Backpack Reload",            "PBXAddons_SettingsFlags",    "OffOn", 4
+    StaticText "PBX Settings", gold
+    FlagOption "$PBXAddons_SmartScav_Enable",            "PBXAddons_SettingsFlags",    "OffOn", 0
+    FlagOption "$PBXAddons_HelmetDrops_Enable",          "PBXAddons_SettingsFlags",    "OffOn", 1
+    FlagOption "$PBXAddons_DamageIndicators_Enable",     "PBXAddons_SettingsFlags",    "OffOn", 2
+    FlagOption "$PBXAddons_DamageFeedback_Enable",       "PBXAddons_SettingsFlags",    "OffOn", 3
+    FlagOption "$PBXAddons_BackpackReload_Enable",       "PBXAddons_SettingsFlags",    "OffOn", 4
 
     StaticText " "
 
-    StaticText "Backpack Reload Settings"
-    FlagOption "Enable Backpack Reload",            "PBXAddons_SettingsFlags",   "OffOn", 4
-    slider "Reload Frequency",                      "PBBCKPR_Time",1,350,5
-    slider "Reload Amount",                         "PBBCKPR_Ref",1,10,1
-    option "Announce Reloads",                      "PBBCKPR_Tell","yesno"
+    Submenu "$PBXAddons_SmartScavSettings", "PBXAddons_SmartScavengerMenu"
+    Submenu "$PBXAddons_BackpackReloadSettings", "PBXAddons_BackpackReloadMenu"
+    Submenu "$PBXAddons_DamageIndicatorsSettings", "PBXAddons_DamageIndicatorsMenu"
 
     StaticText " "
 
     StaticText "$PBXAddons_Version"
 
+}
+
+OptionMenu "PBXAddons_SmartScavengerMenu"
+{
+    Title "$PBXAddons_SmartScavSettings"
+	Class "PB_OptionMenu"
+
+	StaticText "$PBXAddons_SmartScavSettings", grey
+    StaticText " "
+    StaticText " "
+
+    FlagOption "$PBXAddons_SmartScav_Enable",            	"PBXAddons_SettingsFlags",    "OffOn", 0
+    StaticText " "
+    FlagOption "$PBXAddons_SmartScav_CellPack",      		"PBXAddons_SmartScavFlags",    "OffOn", 0
+    StaticText " "
+    FlagOption "$PBXAddons_SmartScav_ShellBox",      		"PBXAddons_SmartScavFlags",    "OffOn", 1
+    StaticText " "
+    FlagOption "$PBXAddons_SmartScav_RocketBox",     		"PBXAddons_SmartScavFlags",    "OffOn", 2
+    StaticText " "
+    FlagOption "$PBXAddons_SmartScav_HighCalBox",   		"PBXAddons_SmartScavFlags",    "OffOn", 3
+    StaticText " "
+    FlagOption "$PBXAddons_SmartScav_LowCalBox",    		"PBXAddons_SmartScavFlags",    "OffOn", 4
+    StaticText " "
+    FlagOption "$PBXAddons_SmartScav_Medikit",        		"PBXAddons_SmartScavFlags",    "OffOn", 5
+}
+
+OptionMenu "PBXAddons_DamageIndicatorsMenu"
+{
+    Title "$PBXAddons_DamageIndicatorsSettings"
+	Class "PB_OptionMenu"
+
+	StaticText "$PBXAddons_DamageIndicatorsSettings", grey
+    StaticText " "
+    StaticText " "
+
+    FlagOption "$PBXAddons_DamageIndicators_Enable",          	 "PBXAddons_SettingsFlags",    "OffOn", 2
+    StaticText " "
+    option "$PBXAddons_DamageIndicators_Type",                   "D4D_IndicatorType","D4DIndTypes"
+    StaticText " "
+	option "$PBXAddons_DamageIndicators_Colored", 				 "D4D_NoColorType","NoYes"
+    StaticText " "
+	slider "$PBXAddons_DamageIndicators_Scale",                  "D4D_DIScale",0.2,1.0,0.05
+    StaticText " "
+	slider "$PBXAddons_DamageIndicators_Alpha",                  "D4D_DIAlpha",0.05,1.0,0.05
+    StaticText " "
+	slider "$PBXAddons_DamageIndicators_Duration",               "D4D_DITimer",20,140,5
+    StaticText " "
+	option "$PBXAddons_DamageIndicators_Animation",              "D4D_DIAnim","D4DAnimTypes"
+    StaticText " "
+	statictext "$PBXAddons_DamageIndicators_DefaultColor"
+    StaticText " "
+	colorpicker "$PBXAddons_DamageIndicators_ColorPicker",       "D4D_DefColor"
+    StaticText " "
+	textfield "$PBXAddons_DamageIndicators_Hex",                 "D4D_DefColor"
+}
+
+OptionMenu "PBXAddons_BackpackReloadMenu"
+{
+    Title "$PBXAddons_BackpackReloadSettings"
+	Class "PB_OptionMenu"
+
+	StaticText "$PBXAddons_BackpackReloadSettings", grey
+    StaticText " "
+    StaticText " "
+
+    FlagOption "$PBXAddons_BackpackReload_Enable",            "PBXAddons_SettingsFlags",   "OffOn", 4
+    StaticText " "
+    slider "$PBXAddons_BackpackReload_Frequency",             "PBBCKPR_Time",1,350,5
+    StaticText " "
+    slider "$PBXAddons_BackpackReload_Amount",                "PBBCKPR_Ref",1,10,1
+    StaticText " "
+    option "$PBXAddons_BackpackReload_Announce",              "PBBCKPR_Tell","yesno"
+}
+
+optionvalue "D4DIndTypes"
+{
+	0,"MW2019"
+	1,"D4D"
+	2,"CODWW2"
+	3,"WD"
+}
+
+optionvalue "D4DAnimTypes"
+{
+	-1,"None"
+	0,"< Expand >(Subtle)"
+	1,">Shrink<(Fast)"
+	2,"< Expand >(Fast)"
+	3,">Shrink<(Subtle)"
+	4,"Blink"
+	5,"Float"
+	6,"Float & grow"
 }

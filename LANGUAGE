@@ -1,10 +1,46 @@
 [enu default]
 // General
-PBXAddons_Settings = "\cj⟁\c- PBX - Addons Settings";
-PBXAddons_Version = "Project Brutality eXtended - Addons Version 1.0 Loaded"
+PBXAddons_Settings = "\cj⟰\c- PBX - Addons Settings";
+PBXAddons_Version = "Project Brutality eXtended - Addons \nVersion 1.0 Loaded";
+
+PBXAddons_SmartScavSettings = "Smart Scavenger Settings";
+PBXAddons_BackpackReloadSettings = "Backpack Reload Settings";
+PBXAddons_DamageIndicatorsSettings = "Damage Indicators Settings";
+
+// MENU
+PBXAddons_DamageFeedback_Enable = "Enable Damage Feedback";
+PBXAddons_HelmetDrops_Enable = "Enable Helmet Drops";
+
+// Smart Scavenger
+PBXAddons_SmartScav_Enable = "Enable Smart Scavenger (Requires Map Restart)";
+PBXAddons_SmartScav_CellPack = "Enable Cell Pack Smart Scavenger";
+PBXAddons_SmartScav_ShellBox = "Enable Shell Box Smart Scavenger";
+PBXAddons_SmartScav_RocketBox = "Enable Rocket Box Smart Scavenger";
+PBXAddons_SmartScav_HighCalBox = "Enable High Cal Box Smart Scavenger";
+PBXAddons_SmartScav_LowCalBox = "Enable Low Cal Box Smart Scavenger";
+PBXAddons_SmartScav_Medikit = "Enable Medikit Smart Scavenger";
+
+// Damage Indicators
+PBXAddons_DamageIndicators_Enable = "Enable Damage Indicators";
+PBXAddons_DamageIndicators_Type = "Type ";
+PBXAddons_DamageIndicators_Colored = "Enable damage type colored indicator ";
+PBXAddons_DamageIndicators_Scale = "Scale ";
+PBXAddons_DamageIndicators_Alpha = "Alpha ";
+PBXAddons_DamageIndicators_Duration = "Duration (in Tics, 35 tics = 1 second) ";
+PBXAddons_DamageIndicators_Animation = "Animation ";
+
+PBXAddons_DamageIndicators_DefaultColor = "Indicator default color";
+PBXAddons_DamageIndicators_ColorPicker = "Color picker";
+PBXAddons_DamageIndicators_Hex = "Hex";
+
+// Backpack Reload
+PBXAddons_BackpackReload_Enable = "Enable Backpack Reload";
+PBXAddons_BackpackReload_Frequency = "Reload Frequency";
+PBXAddons_BackpackReload_Amount = "Reload Amount";
+PBXAddons_BackpackReload_Announce = "Announce Reloads";
 
 // TOOL TIPS
 // Backpack Reload
-TIP_PBBCKPR_Time = "How frequently it will check weapons (in tics, 35 tics = 1 second).";
+TIP_PBBCKPR_Time = "How frequently it will check weapons (in Tics, 35 tics = 1 second).";
 TIP_PBBCKPR_Ref = "How many units will it try to reload each time.";
 TIP_PBBCKPR_Tell = "Whether to announce when a weapon has been reloaded.";

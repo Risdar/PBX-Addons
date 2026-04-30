@@ -1,5 +1,6 @@
 Gameinfo
 {
 	addeventhandlers = "PBXAddons_Spawners",
-    "PBXAddons_Handler"
+    "PBXAddons_Handler", "D4DHandler", "PB_HitFeedback_Handler",
+    "HelmetDropHandler"
 }

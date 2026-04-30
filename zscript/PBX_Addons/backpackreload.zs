@@ -148,6 +148,6 @@ Class PB_backpackreloadItem : inventory
 	// }
 	
 	static const string PB_noreloadweapons[] = {
-		"PB_Unmaker"
+		"PB_Unmaker","PBX_DemonExt"
 	};
 }
