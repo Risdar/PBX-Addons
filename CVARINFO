@@ -1,0 +1,10 @@
+// General Settings
+server int PBXAddons_GeneralFlags = 0;
+
+// Settings FLags
+server int PBXAddons_SettingsFlags = 0;
+
+// Backpack Reload
+server int 	PBBCKPR_Time		= 	70;
+server int 	PBBCKPR_Ref			=	5;
+server bool PBBCKPR_Tell		=	false;

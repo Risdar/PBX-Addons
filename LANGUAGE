@@ -1,0 +1,10 @@
+[enu default]
+// General
+PBXAddons_Settings = "\cj⟁\c- PBX - Addons Settings";
+PBXAddons_Version = "Project Brutality eXtended - Addons Version 1.0 Loaded"
+
+// TOOL TIPS
+// Backpack Reload
+TIP_PBBCKPR_Time = "How frequently it will check weapons (in tics, 35 tics = 1 second).";
+TIP_PBBCKPR_Ref = "How many units will it try to reload each time.";
+TIP_PBBCKPR_Tell = "Whether to announce when a weapon has been reloaded.";

@@ -1,0 +1,5 @@
+Gameinfo
+{
+	addeventhandlers = "PBXAddons_Spawners",
+    "PBXAddons_Handler"
+}

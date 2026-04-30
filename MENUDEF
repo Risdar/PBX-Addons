@@ -1,0 +1,30 @@
+AddOptionMenu "PB_AddonOptions"
+{
+    Submenu "$PBXAddons_Settings", "PBXAddons_Menu"
+}
+
+OptionMenu "PBXAddons_Menu"
+{
+    Title "$PBXAddons_Settings"
+	Class "PB_OptionMenu"
+
+    StaticText "PBX Settings"
+    FlagOption "Enable Smart Scavenger",            "PBXAddons_SettingsFlags",    "OffOn", 0
+    FlagOption "Enable Helmet Drops",               "PBXAddons_SettingsFlags",    "OffOn", 1
+    FlagOption "Enable Damage Indicators",          "PBXAddons_SettingsFlags",    "OffOn", 2
+    FlagOption "Enable Damage Feedback",            "PBXAddons_SettingsFlags",    "OffOn", 3
+    FlagOption "Enable Backpack Reload",            "PBXAddons_SettingsFlags",    "OffOn", 4
+
+    StaticText " "
+
+    StaticText "Backpack Reload Settings"
+    FlagOption "Enable Backpack Reload",            "PBXAddons_SettingsFlags",   "OffOn", 4
+    slider "Reload Frequency",                      "PBBCKPR_Time",1,350,5
+    slider "Reload Amount",                         "PBBCKPR_Ref",1,10,1
+    option "Announce Reloads",                      "PBBCKPR_Tell","yesno"
+
+    StaticText " "
+
+    StaticText "$PBXAddons_Version"
+
+}
