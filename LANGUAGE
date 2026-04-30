@@ -1,7 +1,7 @@
 [enu default]
 // General
 PBXAddons_Settings = "\cj⟰\c- PBX - Addons Settings";
-PBXAddons_Version = "Project Brutality eXtended - Addons \nVersion 1.0 Loaded";
+PBXAddons_Version = "PBX - Addons Version 1.0 Loaded";
 
 PBXAddons_SmartScavSettings = "Smart Scavenger Settings";
 PBXAddons_BackpackReloadSettings = "Backpack Reload Settings";
