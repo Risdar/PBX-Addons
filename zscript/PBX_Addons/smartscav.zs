@@ -80,7 +80,7 @@ class Smartscav_Cells : SmartScavAmmoBase
         "####" "#" 1; 
         Fail;
 	PickupFull:
-		TNT1 A 0 A_SpawnItemEx("PB_CellPack");
+		TNT1 A 0 A_SpawnItemEx("SmartScav_CellPack");
 		Stop;
 	SpawnPartial:
 		TNT1 A 0;
@@ -100,6 +100,18 @@ class Smartscav_Cells : SmartScavAmmoBase
 	}
 }
 
+class SmartScav_CellPack : PB_Cell
+{
+	Default
+	{
+		//$Category Project Brutality - Ammunition
+		//$Sprite YELPF0
+		//Scale 0.4;
+		Inventory.Amount 100;
+		Inventory.PickupSound "misc/bulkcell_PickUp";
+		PB_Ammo.ammotype "cellpack";
+	}
+}
 // SMART SHELLS ==========================================================================================
 class Smartscav_Shells : SmartScavAmmoBase
 {
@@ -123,7 +135,7 @@ class Smartscav_Shells : SmartScavAmmoBase
         "####" "#" 1; 
         Fail;
 	PickupFull:
-		TNT1 A 0 A_SpawnItemEx("PB_ShellBox");
+		TNT1 A 0 A_SpawnItemEx("SmartScav_ShellBox");
 		Stop;
 	SpawnPartial:
 		SB0X A 15;
@@ -138,6 +150,18 @@ class Smartscav_Shells : SmartScavAmmoBase
 	}
 }
 
+class SmartScav_ShellBox : PB_Shell
+{
+	Default
+	{
+		//$Category Project Brutality - Ammunition
+		//$Sprite SBOXA0
+		//Scale 0.25;
+		Inventory.Amount 12;
+		Inventory.PickupSound "misc/shellbox_PickUp";
+		PB_Ammo.ammotype "shellbox";
+	}
+}
 // SMART ROCKETS ==========================================================================================
 class Smartscav_Rockets : SmartScavAmmoBase
 {
@@ -161,7 +185,7 @@ class Smartscav_Rockets : SmartScavAmmoBase
         "####" "#" 1; 
         Fail;
 	PickupFull:
-		TNT1 A 0 A_SpawnItemEx("PB_RocketBox");
+		TNT1 A 0 A_SpawnItemEx("SmartScav_RocketBox");
 		Stop;
 	SpawnPartial:
 		BR0K A 15;
@@ -181,6 +205,19 @@ class Smartscav_Rockets : SmartScavAmmoBase
 	}
 }
 
+class SmartScav_RocketBox : PB_RocketAmmo
+{
+	Default
+	{
+		//$Title Box of Explosives
+		//$Category Project Brutality - Ammunition
+		//$Sprite BR0KA0
+		//Scale 0.4;
+		Inventory.Amount 6;
+		Inventory.PickupSound "misc/rockboxa";
+		PB_Ammo.AmmoType "expbox";
+	}
+}
 // SMART HIGHCAL ==========================================================================================
 class Smartscav_HighCal : SmartScavAmmoBase
 {
@@ -205,7 +242,7 @@ class Smartscav_HighCal : SmartScavAmmoBase
       	"####" "#" 1; 
         Fail;
 	PickupFull:
-		TNT1 A 0 A_SpawnItemEx("PB_HighCalBox");
+		TNT1 A 0 A_SpawnItemEx("SmartScav_HighCalBox");
 		Stop;
 	SpawnPartial:
 		AMM0 A 15;
@@ -223,6 +260,18 @@ class Smartscav_HighCal : SmartScavAmmoBase
 	}
 }
 
+class SmartScav_HighCalBox : PB_HighCalMag
+{
+	Default
+	{
+		//$Category Project Brutality - Ammunition
+		//$Sprite AMM0A0
+		//Scale 0.15;
+		Inventory.Amount 60;
+		Inventory.PickupSound "CBOXPKUP";
+		PB_Ammo.ammotype "highcalbox";
+	}
+}
 // SMART LOWCAL ==========================================================================================
 class Smartscav_LowCal : SmartScavAmmoBase
 {
@@ -247,7 +296,7 @@ class Smartscav_LowCal : SmartScavAmmoBase
         "####" "#" 1; 
         Fail;
 	PickupFull:
-		TNT1 A 0 A_SpawnItemEx("PB_LowCalBox");
+		TNT1 A 0 A_SpawnItemEx("SmartScav_LowCalBox");
 		Stop;
 	SpawnPartial:
 		AMOK A 15;
@@ -267,6 +316,17 @@ class Smartscav_LowCal : SmartScavAmmoBase
 	}
 }
 
+class SmartScav_LowCalBox : PB_LowCalMag
+{
+	Default
+	{
+		//$Category Project Brutality - Ammunition
+		//$Sprite AMOKA0
+		Inventory.Amount 60;
+		Inventory.PickupSound "CBOXPKUP";
+		PB_Ammo.ammotype "lowcalbox";
+	}
+}
 // SMART MEDIKIT ==========================================================================================
 class Smartscav_Medikit : CustomInventory
 {
@@ -302,7 +362,7 @@ class Smartscav_Medikit : CustomInventory
 		MED1 A -1;
 		Stop;
 	SpawnKit:
-		TNT1 A 0 A_SpawnItemEx("PB_Medikit");
+		TNT1 A 0 A_SpawnItemEx("SmartScav_MediPack");
 		Stop;
 	SpawnStims:
 		MED1 A 10;
@@ -312,5 +372,27 @@ class Smartscav_Medikit : CustomInventory
 		MED1 A 70;
 		MED1 A 5 A_FadeOut(0.1);
 		Stop;
+	}
+}
+
+class SmartScav_MediPack : PB_Health
+{
+	Default
+	{
+		//$Category Project Brutality - Health and Armor
+		//$Sprite MED1A0
+		Tag "Medikit";
+		Inventory.Amount 25;
+		Inventory.PickupSound "misc/L_HP_pickup";
+		Inventory.PickupMessage "Medikit (+%a HP)";
+		Health.LowMessage 25, "Medikit (+%a much needed HP)";
+		//Scale .30;
+	}
+
+	States
+	{
+		Spawn:
+			MED1 A -1;
+			stop;
 	}
 }
