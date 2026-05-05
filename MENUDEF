@@ -8,7 +8,7 @@ OptionMenu "PBXAddons_Menu"
     Title "$PBXAddons_Settings"
 	Class "PB_OptionMenu"
 
-    StaticText "PBX Settings", gold
+    /* StaticText "PBX Settings", gold */
     FlagOption "$PBXAddons_SmartScav_Enable",            "PBXAddons_SettingsFlags",    "OffOn", 0
     FlagOption "$PBXAddons_HelmetDrops_Enable",          "PBXAddons_SettingsFlags",    "OffOn", 1
     FlagOption "$PBXAddons_DamageIndicators_Enable",     "PBXAddons_SettingsFlags",    "OffOn", 2
@@ -36,19 +36,19 @@ OptionMenu "PBXAddons_SmartScavengerMenu"
     StaticText " "
     StaticText " "
 
-    FlagOption "$PBXAddons_SmartScav_Enable",            	"PBXAddons_SettingsFlags",    "OffOn", 0
+    FlagOption "$PBXAddons_SmartScav_Enable",       "PBXAddons_SettingsFlags",    "OffOn", 0
     StaticText " "
-    FlagOption "$PBXAddons_SmartScav_CellPack",      		"PBXAddons_SmartScavFlags",    "OffOn", 0
+    FlagOption "$PBXAddons_SmartScav_CellPack",     "PBXAddons_SmartScavFlags",    "OffOn", 0
     StaticText " "
-    FlagOption "$PBXAddons_SmartScav_ShellBox",      		"PBXAddons_SmartScavFlags",    "OffOn", 1
+    FlagOption "$PBXAddons_SmartScav_ShellBox",     "PBXAddons_SmartScavFlags",    "OffOn", 1
     StaticText " "
-    FlagOption "$PBXAddons_SmartScav_RocketBox",     		"PBXAddons_SmartScavFlags",    "OffOn", 2
+    FlagOption "$PBXAddons_SmartScav_RocketBox",    "PBXAddons_SmartScavFlags",    "OffOn", 2
     StaticText " "
-    FlagOption "$PBXAddons_SmartScav_HighCalBox",   		"PBXAddons_SmartScavFlags",    "OffOn", 3
+    FlagOption "$PBXAddons_SmartScav_HighCalBox",   "PBXAddons_SmartScavFlags",    "OffOn", 3
     StaticText " "
-    FlagOption "$PBXAddons_SmartScav_LowCalBox",    		"PBXAddons_SmartScavFlags",    "OffOn", 4
+    FlagOption "$PBXAddons_SmartScav_LowCalBox",    "PBXAddons_SmartScavFlags",    "OffOn", 4
     StaticText " "
-    FlagOption "$PBXAddons_SmartScav_Medikit",        		"PBXAddons_SmartScavFlags",    "OffOn", 5
+    FlagOption "$PBXAddons_SmartScav_Medikit",      "PBXAddons_SmartScavFlags",    "OffOn", 5
 }
 
 OptionMenu "PBXAddons_DamageIndicatorsMenu"

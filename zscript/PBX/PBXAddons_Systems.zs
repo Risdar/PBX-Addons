@@ -18,4 +18,19 @@ Class PBXAddons_Handler : eventhandler
 		if(!players[e.playernumber].mo.findinventory("PB_backpackreloadItem"))
 			players[e.playernumber].mo.A_giveinventory("PB_backpackreloadItem");
 	}
+
+    // Checks if the Ulitmate Visor mod is loaded and disables PBXAddons hit feedback regardless
+    override void WorldLoaded (WorldEvent e)
+    {
+        string uvClassName = "UV_HudVisorDraw";
+        let handler = EventHandler.Find(uvClassName);
+        if(handler)
+        {
+            CVAR.FindCVar('isUltimateVisorLoaded').SetBool(true);
+        }
+        else
+        {
+            CVAR.FindCVar('isUltimateVisorLoaded').SetBool(false);
+        }
+    }
 }

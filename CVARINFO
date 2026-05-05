@@ -1,5 +1,6 @@
 // General Settings
 server int PBXAddons_GeneralFlags = 0;
+server bool isUltimateVisorLoaded = false;
 
 // Settings FLags
 server int PBXAddons_SettingsFlags = 0;
