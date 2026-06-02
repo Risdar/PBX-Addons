@@ -3,7 +3,7 @@ enum ePBXAddons_SettingsFlags{
     ePBXAddons_DisableHelmetDrops    = 1 << 1,
     ePBXAddons_DamageIndicators      = 1 << 2,
     ePBXAddons_DamageFeedback        = 1 << 3,
-    ePBXAddons_BackpackReload        = 1 << 4
+    ePBXAddons_DisableBackpackReload = 1 << 4
 }
 
 enum ePBXAddons_GeneralFlags{

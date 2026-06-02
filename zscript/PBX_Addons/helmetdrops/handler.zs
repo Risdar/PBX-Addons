@@ -94,7 +94,7 @@ class HelmetDropHandler : EventHandler
 		// Up - Down velocity
 		double zvel = random(5, 10); 
 		
-		// Using "let" to define helm as the spawned helmet
+		// Spawn a PB_DroppedHelmet at the actor's position and get a pointer to it
 		let helm = Actor.Spawn ( 
 			"PB_DroppedHelmet", // actor name
 			(pos.X, pos.Y, pos.Z + actor.Default.Height * 0.9) // vector3

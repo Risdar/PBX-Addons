@@ -104,8 +104,8 @@ Class D4VisualDamageManager play
 		}
 		if(plr.player)
 		{
-			indtype = cvar.GetCVar("D4D_IndicatorType",plr.player).getint();
-			nocolor = cvar.getcvar("D4D_NoColorType",plr.player).getbool();
+			indtype 	 = cvar.GetCVar("D4D_IndicatorType",plr.player).getint();
+			nocolor 	 = cvar.getcvar("D4D_NoColorType",plr.player).getbool();
 			defaultColor = cvar.getcvar("D4D_DefColor",plr.player).getint();
 		}	
 		let arrow = new('D4DamageIndicator');
@@ -197,9 +197,9 @@ Class D4VisualDamageManager play
 		int AnimType = 0;
 		
 		
-		if (CDIAlpha)	Alpha = CDIAlpha.GetFloat();
-		if (CDIScale)	Scale = CDIScale.GetFloat();
-		if(CDIAnim)		AnimType = CDIAnim.GetInt();
+		if (CDIAlpha)	Alpha 	 = CDIAlpha.GetFloat();
+		if (CDIScale)	Scale 	 = CDIScale.GetFloat();
+		if (CDIAnim)	AnimType = CDIAnim.GetInt();
 		
 		int size = Arrows.Size();
 		for (int i = 0; i < size; i++)
