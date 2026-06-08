@@ -33,13 +33,12 @@ Class PB_DroppedHelmet : Actor
         3BON A 0 NoDelay { A_SetRoll(frandom(0, 360)); }
         3BON A 0 { user_rollleft = random(0, 1) == 0 ? 1 : 0; }
         3BON A 0 A_JumpIf(random(0, 1) == 0, "Idle");
-        3BON A 0 { A_SetScale(-scalex, scaley); }
+        3BON A 0 { A_SetScale(-scale.x, scale.y); }
     Idle:
         3BON A 0 { bTHRUACTORS = false; }
     Bounce:
         3BON A 0 A_StartSound("misc/abonus_PickUp", CHAN_AUTO, 0, 1, ATTN_NORM, 1.35);
-        3BON AAAAAAAAAAAAAAAAAAAAAAA 2
-        {
+        3BON AAAAAAAAAAAAAAAAAAAAAAA 2 {
             if(abs(vel.y) > 0.05 || abs(vel.x) > 0.05 || vel.z != 0)
             {
                 if(user_rollleft) { A_SetRoll(roll - 5); }
@@ -47,8 +46,7 @@ Class PB_DroppedHelmet : Actor
             }
         }
     Death:
-        3BON A 0
-        {
+        3BON A 0 {
             A_SpawnItemEx("PB_DroppedHelmetItem", 0, 0, 0,
                 vel.x, vel.y, vel.z, angle,
                 SXF_TRANSFERTRANSLATION | SXF_ABSOLUTEANGLE | SXF_TRANSFERROLL | SXF_TRANSFERSCALE);
