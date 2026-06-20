@@ -14,12 +14,14 @@ OptionMenu "PBXAddons_Menu"
     FlagOption "$PBXAddons_DamageIndicators_Enable",     "PBXAddons_SettingsFlags",    "OffOn", 2
     FlagOption "$PBXAddons_DamageFeedback_Enable",       "PBXAddons_SettingsFlags",    "OffOn", 3
     FlagOption "$PBXAddons_BackpackReload_Enable",       "PBXAddons_SettingsFlags",    "OffOn", 4
+    FlagOption "$PBXAddons_SGLUpgrade_Enable",           "PBXAddons_SettingsFlags",    "OffOn", 5
 
     StaticText " "
 
     Submenu "$PBXAddons_SmartScavSettings", "PBXAddons_SmartScavengerMenu"
-    Submenu "$PBXAddons_BackpackReloadSettings", "PBXAddons_BackpackReloadMenu"
     Submenu "$PBXAddons_DamageIndicatorsSettings", "PBXAddons_DamageIndicatorsMenu"
+    /* Submenu "$PBXAddons_DamageFeedbackSettings", "PBXAddons_DamageFeedbackMenu" */
+    Submenu "$PBXAddons_BackpackReloadSettings", "PBXAddons_BackpackReloadMenu"
 
     StaticText " "
 

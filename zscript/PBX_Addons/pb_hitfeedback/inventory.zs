@@ -30,6 +30,7 @@ class PB_HitFeedback_Inventory : Inventory
         {
             EventHandler.SendInterfaceEvent( owner.PlayerNumber(), "PB_hf_ShieldBroken", armorDelta + healthDelta );
             owner.A_StartSound( "hud/shieldbreak", flags: CHANF_UI );
+            owner.A_Print("SHIELD COMPROMISED");
         }
 
         playerArmor[P_OLD] = playerArmor[P_CURRENT];

@@ -1,0 +1,10 @@
+/*=============================================================================
+//
+//	SGL Upgrade
+//
+//  Credits:
+//	iamcarrotmaster (Original Sprites)
+//  NemesisVampy (Edited Sprite)
+//  BeefRice (Code/Sprite Edit)
+//
+==============================================================================*/

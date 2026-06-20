@@ -13,3 +13,4 @@ Version 4.13
 #include "zscript/PBX_Addons/pb_hitfeedback/inventory.zs"
 #include "zscript/PBX_Addons/helmetdrops/handler.zs"
 #include "zscript/PBX_Addons/helmetdrops/inventory.zs"
+#include "zscript/PBX_Addons/EditedSGL.zs"

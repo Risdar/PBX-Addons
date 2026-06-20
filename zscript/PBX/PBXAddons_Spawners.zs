@@ -11,9 +11,14 @@ class PBXAddons_Spawners : EventHandler
 {
     override void CheckReplacement(ReplaceEvent e) 
 	{
+        SmartScavSpawns(e);
+        SGLUpgrade(e);
+    }
+
+    void SmartScavSpawns(ReplaceEvent e)
+    {
         if(PBXAddons_SettingsFlags & ePBXAddons_DisableSmartScav) return;
-        let item = e.Replacee.GetClassName();
-        switch(item)
+        switch(e.Replacee.GetClassName())
         {
             case 'PB_CellPack':     if(!(PBXAddons_SmartScavFlags & ePBXAddons_DisableSmartScavCellPack)) e.Replacement    = "Smartscav_Cells";         break;
             case 'PB_ShellBox':     if(!(PBXAddons_SmartScavFlags & ePBXAddons_DisableSmartScavShellBox)) e.Replacement    = "Smartscav_Shells";        break;
@@ -23,4 +28,24 @@ class PBXAddons_Spawners : EventHandler
             case 'PB_Medikit':      if(!(PBXAddons_SmartScavFlags & ePBXAddons_DisableSmartScavMedikit)) e.Replacement     = "Smartscav_Medikit";       break;
         }
     }
+
+    void SGLUpgrade(ReplaceEvent e)
+    {
+        if(PBXAddons_SettingsFlags & ePBXAddons_DisableSGLUpgrade) return;
+        if(e.Replacee.GetClassName() == "PB_SuperGL")
+            e.Replacement   = "PBX_SGLEdited";
+    }
+}
+
+class SGLUpgrade_injector : PBInjector
+{
+	override void Init(PB_EventHandler handler)
+	{
+        if(PBXAddons_SettingsFlags & ePBXAddons_DisableSGLUpgrade) return;
+		handler.InjectSpawn('PB_UpgradeSpawnerT3', 'SGL_Upgrade', 255, 1);
+		handler.InjectSpawn('PB_UpgradeSpawnerT4', 'SGL_Upgrade', 255, 1);
+		
+		handler.InjectSpawn('PB_RLSpawnerT3', 'SGL_Upgrade', 255, 1);
+		handler.InjectSpawn('PB_RLSpawnerT4', 'SGL_Upgrade', 255, 1);
+	}
 }

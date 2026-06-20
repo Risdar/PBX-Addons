@@ -39,6 +39,12 @@ PBXAddons_BackpackReload_Frequency  = "Reload Frequency";
 PBXAddons_BackpackReload_Amount     = "Reload Amount";
 PBXAddons_BackpackReload_Announce   = "Announce Reloads";
 
+// Weapon Upgrades
+PBXAddons_SGLUpgrade_Enable         = "Enable SGL Upgrade";
+PBXAddons_SGLUpgrade_NoUpgrade      = "Grenade type not available \nYou need the Elemental Grenades Upgrade";
+PBXAddons_SGLUpgrade_Mesasage       = "UAC-M7 Automatic Grenade Launcher Elemental Grenades Addon (Slot 6)";
+PBXAddons_SGLUpgrade_Tag            = "SGL Upgrade";
+
 // TOOL TIPS
 // Backpack Reload
 TIP_PBBCKPR_Time    = "How frequently it will check weapons (in Tics, 35 tics = 1 second).";
