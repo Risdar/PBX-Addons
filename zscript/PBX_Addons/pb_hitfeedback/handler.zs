@@ -13,8 +13,9 @@ class PB_HitFeedback_Handler : EventHandler
 		if(disableDmgFeedback)
 			disabled = disableDmgFeedback.getint() & ePBXAddons_DamageFeedback;
 
-        if( player && !disabled && !isUltimateVisorLoaded)
-            player.GiveInventoryType( "PB_HitFeedback_Inventory" );
+        if( player && !disabled && !isUltimateVisorLoaded) return;
+            
+        player.GiveInventoryType( "PB_HitFeedback_Inventory" );
 
         cachedOverlays[0] = TexMan.CheckForTexture( "Graphics/visorcrack1.png" );
         cachedOverlays[1] = TexMan.CheckForTexture( "Graphics/crackflash1.png" );

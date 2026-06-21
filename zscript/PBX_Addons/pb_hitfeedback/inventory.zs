@@ -29,8 +29,10 @@ class PB_HitFeedback_Inventory : Inventory
         if( playerArmor[P_OLD] > playerArmor[P_CURRENT] && playerArmor[P_CURRENT] <= 0 && playerHealth[P_CURRENT] > 0 )
         {
             EventHandler.SendInterfaceEvent( owner.PlayerNumber(), "PB_hf_ShieldBroken", armorDelta + healthDelta );
-            owner.A_StartSound( "hud/shieldbreak", flags: CHANF_UI );
-            owner.A_Print("SHIELD COMPROMISED");
+            if(!(PBXAddons_DMGFeedbackFlags & ePBXAddons_DisableText))
+                owner.A_Print("$PBXAddons_DMGFeedback_Text");
+            if(!(PBXAddons_DMGFeedbackFlags & ePBXAddons_DisableSound))
+                owner.A_StartSound( "hud/shieldbreak", flags: CHANF_UI );
         }
 
         playerArmor[P_OLD] = playerArmor[P_CURRENT];

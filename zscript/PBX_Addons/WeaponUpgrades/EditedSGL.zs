@@ -12,19 +12,57 @@ class PBX_SGLEdited : PB_SuperGL
 				A_SetInventory("CantWeaponSpecial",1);
 				A_SetInventory("GoWeaponSpecialAbility",0);
 			}
-            TNT1 A 0 PB_PreHandleSGLWheelEdited();
+            TNT1 A 0 {
+				if(findinventory("SelectSGL_No"))
+				{
+					A_Print("$PBXAddons_SGLUpgrade_NoUpgrade");
+					A_SetInventory("SelectSGL_No",0);
+					return resolvestate("ready");
+				}
+				return resolvestate(null);
+			}
             goto super::WeaponSpecial;
     }
+}
 
-    action state PB_PreHandleSGLWheelEdited()
+// So the PBX Core can draw it correctly
+class PBXHUDService_EditedSGL : service
+{
+    override Object GetObjectUI(String request,String stringArg,int intArg,double doubleArg,Object objectArg)
     {
-        if(findinventory("SelectSGL_No"))
-        {
-            A_Print("$PBXAddons_SGLUpgrade_NoUpgrade");
-            A_SetInventory("SelectSGL_No",0);
-            return resolvestate("ready");
-        }
-        return resolvestate(null);
+        if(request != "PBX_HUD") return null;
+        let weapon = PB_WeaponBase(objectArg); // Get a pointer to the weapon here so you can do stuff with the weapon
+        if(!weapon) return null;
+
+        if(weapon.GetClassName() != 'PBX_SGLEdited')return null;
+
+        let data = PBXHUDData(new("PBXHUDData"));
+        if (!data) return null;
+        data.Handled = true;
+        data.SkipAutoDraw = false;
+
+		let sgl = PB_SuperGL(weapon);
+		if(!sgl) return null;
+
+		static const string sglIcons[] = {
+			"graphics/pywheel/grenade_impact.png", "graphics/pywheel/grenade_sticky.png", 
+			"graphics/pywheel/grenade_acid.png", "graphics/pywheel/grenade_incendiary.png", 
+			"graphics/pywheel/grenade_cryo.png"
+		};
+
+		int sglgren = clamp(sgl.GrenadeMode, 0, sglIcons.Size() - 1);
+
+        data.Image1 = "";
+        data.Image2 = sglIcons[sglgren];
+        data.Image3 = "";       // Weapon Mode 2 Icon (For example the CryoRifle has 2 modes at the same time)
+
+        data.Offset1 = (-5, 13);   // Weapon Icon Position
+        data.Offset2 = (3,-18);   // Weapon Mode Icon Position
+
+        data.Scale1 = 0.9;   // Weapon Icon Scale
+        data.Scale2 = 0.3;      // Weapon Mode Icon Scale
+
+        return data;
     }
 }
 
@@ -44,7 +82,7 @@ class SGL_Upgrade : PB_UpgradeItem
 		-INVENTORY.ALWAYSPICKUP;
 		-COUNTITEM;
 		Inventory.Pickupsound "misc/rockboxa";
-		Inventory.PickupMessage "$PBXAddons_SGLUpgrade_Tag";
+		Inventory.PickupMessage "$PBXAddons_SGLUpgrade_Pickup";
 		Tag "$PBXAddons_SGLUpgrade_Tag";
 		Scale 0.52;
 		FloatBobStrength 0.5;
@@ -61,7 +99,7 @@ class SGL_Upgrade : PB_UpgradeItem
 		TNT1 A 0 {
 			A_SetInventory("SGLUpgraded", 1);
 			A_GiveInventory("PB_SuperGL", 1);
-			A_SetWeaponTag("PB_SuperGL","$PB_SGL_TAG");
+			A_SetWeaponTag("PB_SuperGL","$PBXAddons_SGLUpgrade_Tag");
 		}
 		Stop;
 	}

@@ -1,18 +1,9 @@
-enum ePBXAddons_SmartscavFlags{
-    ePBXAddons_DisableSmartScavCellPack         = 1 << 0,
-    ePBXAddons_DisableSmartScavShellBox         = 1 << 1,
-    ePBXAddons_DisableSmartScavRocketBox        = 1 << 2,
-    ePBXAddons_DisableSmartScavHighCalBox       = 1 << 3,
-    ePBXAddons_DisableSmartScavLowCalBox        = 1 << 4,
-    ePBXAddons_DisableSmartScavMedikit          = 1 << 5
-}
-
 class PBXAddons_Spawners : EventHandler
 {
     override void CheckReplacement(ReplaceEvent e) 
 	{
         SmartScavSpawns(e);
-        SGLUpgrade(e);
+        WeaponUpgradeSpawns(e);
     }
 
     void SmartScavSpawns(ReplaceEvent e)
@@ -29,11 +20,14 @@ class PBXAddons_Spawners : EventHandler
         }
     }
 
-    void SGLUpgrade(ReplaceEvent e)
+    void WeaponUpgradeSpawns(ReplaceEvent e)
     {
-        if(PBXAddons_SettingsFlags & ePBXAddons_DisableSGLUpgrade) return;
-        if(e.Replacee.GetClassName() == "PB_SuperGL")
-            e.Replacement   = "PBX_SGLEdited";
+        if(PBXAddons_SettingsFlags & ePBXAddons_DisableWeaponUpgrade) return;
+        switch(e.Replacee.GetClassName())
+        {
+            case 'PB_SuperGL': if(!(PBXAddons_WeaponUpgradesFlags & ePBXAddons_DisableSGLUpgrade)) e.Replacement  = "PBX_SGLEdited";  break;
+            case 'PB_LMG':     if(!(PBXAddons_WeaponUpgradesFlags & ePBXAddons_DisableLMGUpgrade)) e.Replacement  = "PBX_LMGEdited";  break;
+        }
     }
 }
 
@@ -41,11 +35,22 @@ class SGLUpgrade_injector : PBInjector
 {
 	override void Init(PB_EventHandler handler)
 	{
-        if(PBXAddons_SettingsFlags & ePBXAddons_DisableSGLUpgrade) return;
-		handler.InjectSpawn('PB_UpgradeSpawnerT3', 'SGL_Upgrade', 255, 1);
-		handler.InjectSpawn('PB_UpgradeSpawnerT4', 'SGL_Upgrade', 255, 1);
+        if(PBXAddons_SettingsFlags & ePBXAddons_DisableWeaponUpgrade) return;
+
+        if(!(PBXAddons_WeaponUpgradesFlags & ePBXAddons_DisableSGLUpgrade))
+        {
+            handler.InjectSpawn('PB_UpgradeSpawnerT3', 'SGL_Upgrade', 255, 1);
+            handler.InjectSpawn('PB_UpgradeSpawnerT4', 'SGL_Upgrade', 255, 1);
+            
+            handler.InjectSpawn('PB_RLSpawnerT3', 'SGL_Upgrade', 255, 1);
+            handler.InjectSpawn('PB_RLSpawnerT4', 'SGL_Upgrade', 255, 1);
+        }
+
+        if(!(PBXAddons_WeaponUpgradesFlags & ePBXAddons_DisableLMGUpgrade))
+        {
+            handler.InjectSpawn('PB_UpgradeSpawnerT4', 'LMG_Upgrade', 255, 1);
+		    handler.InjectSpawn('PB_MGSpawnerT4', 'LMG_Upgrade', 255, 1);
+        }
 		
-		handler.InjectSpawn('PB_RLSpawnerT3', 'SGL_Upgrade', 255, 1);
-		handler.InjectSpawn('PB_RLSpawnerT4', 'SGL_Upgrade', 255, 1);
 	}
 }

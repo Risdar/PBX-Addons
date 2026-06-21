@@ -8,11 +8,6 @@ server int PBXAddons_SettingsFlags = 0;
 // Smart Scavenger
 server int PBXAddons_SmartScavFlags = 0;
 
-// Backpack Reload
-server int 	PBBCKPR_Time		= 	70;
-server int 	PBBCKPR_Ref			=	5;
-server bool PBBCKPR_Tell		=	false;
-
 // Damage Indicators
 user 	int 	D4D_IndicatorType 		= 0;
 user 	float 	D4D_DIScale 			= 0.5;
@@ -21,3 +16,14 @@ user 	int 	D4D_DITimer 			= 35;
 user	int		D4D_DIAnim				= 0;
 user	bool	D4D_NoColorType			= false;
 user	color	D4D_DefColor			= "FF0000";	//ig nosave could work too
+
+// Damage Feedback
+server int PBXAddons_DMGFeedbackFlags = 0;
+
+// Backpack Reload
+server int 	PBBCKPR_Time		= 	70;
+server int 	PBBCKPR_Ref			=	5;
+server bool PBBCKPR_Tell		=	false;
+
+// Weapon Upgrades
+server int PBXAddons_WeaponUpgradesFlags = 0;

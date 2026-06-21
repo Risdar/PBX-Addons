@@ -1,0 +1,24 @@
+// I HATE DECORATE
+actor PBX_LMGEdited : PB_LMG
+{
+	Inventory.AltHudIcon "LMPIA0"
+
+    States
+    {
+        WeaponSpecial:
+            TNT1 A 0 {
+				A_SetInventory("CantWeaponSpecial",1);
+				A_SetInventory("GoWeaponSpecialAbility",0);
+			}
+            TNT1 A 0 {
+				if(!(findinventory("LMGUpgraded")))
+				{
+					A_Print("$PBXAddons_LMGUpgrade_NoUpgrade");
+					return resolvestate("ready3");
+				}
+				return resolvestate("");
+			}
+            goto super::WeaponSpecial
+
+    }
+}

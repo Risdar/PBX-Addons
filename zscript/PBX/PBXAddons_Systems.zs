@@ -4,11 +4,30 @@ enum ePBXAddons_SettingsFlags{
     ePBXAddons_DamageIndicators      = 1 << 2,
     ePBXAddons_DamageFeedback        = 1 << 3,
     ePBXAddons_DisableBackpackReload = 1 << 4,
-    ePBXAddons_DisableSGLUpgrade     = 1 << 5
+    ePBXAddons_DisableWeaponUpgrade  = 1 << 5
 }
 
 enum ePBXAddons_GeneralFlags{
     ePBXAddons_Version      = 1 << 0
+}
+
+enum ePBXAddons_SmartscavFlags{
+    ePBXAddons_DisableSmartScavCellPack         = 1 << 0,
+    ePBXAddons_DisableSmartScavShellBox         = 1 << 1,
+    ePBXAddons_DisableSmartScavRocketBox        = 1 << 2,
+    ePBXAddons_DisableSmartScavHighCalBox       = 1 << 3,
+    ePBXAddons_DisableSmartScavLowCalBox        = 1 << 4,
+    ePBXAddons_DisableSmartScavMedikit          = 1 << 5
+}
+
+enum ePBXAddons_DMGFeedbackFlags{
+    ePBXAddons_DisableText          = 1 << 0,
+    ePBXAddons_DisableSound         = 1 << 1
+}
+
+enum ePBXAddons_WeaponUpgradesFlags{
+    ePBXAddons_DisableSGLUpgrade         = 1 << 0,
+    ePBXAddons_DisableLMGUpgrade         = 1 << 1
 }
 
 Class PBXAddons_Handler : eventhandler
