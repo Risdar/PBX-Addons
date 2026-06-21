@@ -1,7 +1,7 @@
 [enu default]
 // General
 PBXAddons_Settings  = "\cj⟰\c- PBX - Addons Settings";
-PBXAddons_Version   = "PBX - Addons Version 1.5 Loaded";
+PBXAddons_Version   = "PBX - Addons Version: 1.5";
 
 PBXAddons_SmartScavSettings         = "Smart Scavenger Settings";
 PBXAddons_BackpackReloadSettings    = "Backpack Reload Settings";
@@ -30,7 +30,6 @@ PBXAddons_DamageIndicators_Alpha        = "Alpha ";
 PBXAddons_DamageIndicators_Duration     = "Duration (in Tics, 35 tics = 1 second) ";
 PBXAddons_DamageIndicators_Animation    = "Animation ";
 
-PBXAddons_DamageIndicators_DefaultColor = "Indicator default color";
 PBXAddons_DamageIndicators_ColorPicker  = "Color picker";
 PBXAddons_DamageIndicators_Hex          = "Hex";
 
