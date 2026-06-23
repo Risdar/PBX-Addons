@@ -51,11 +51,13 @@ PBXAddons_SGLUpgrade_Enable         = "Enable SGL Upgrade";
 PBXAddons_SGLUpgrade_NoUpgrade      = "Grenade type not available \nYou need the Elemental Grenades Upgrade";
 PBXAddons_SGLUpgrade_Pickup         = "UAC-M7 Automatic Grenade Launcher Elemental Grenades Addon (Slot 6, Upgrade)";
 PBXAddons_SGLUpgrade_Tag            = "SGL Upgrade";
+PBXAddons_SGLUpgrade_Tag2           = "UAC-M7 Automatic Grenade Launcher w/ Elemental Grenades";
 
 PBXAddons_LMGUpgrade_Enable         = "Enable LMG Upgrade";
 PBXAddons_LMGUpgrade_NoUpgrade      = "Need the Micro Missile Conversion Kit for Micro Missiles";
 PBXAddons_LMGUpgrade_Pickup         = "Light Machine Gun Micro Missiles Conversion Kit (Slot 4, Upgrade)";
 PBXAddons_LMGUpgrade_Tag            = "LMG Upgrade";
+PBXAddons_LMGUpgrade_Tag2           = "Light Machine Gun w/ Micro Missiles Kit";
 
 // TOOL TIPS
 // Backpack Reload

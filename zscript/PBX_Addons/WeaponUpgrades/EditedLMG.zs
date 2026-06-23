@@ -27,12 +27,12 @@ class LMG_Upgrade : PB_UpgradeItem
 		Stop;
 
 	Pickup:
-		TNT1 A 0 A_JumpIf(!FindInventory("PB_LMG") || !FindInventory("LMGUpgraded") || CountInv("PB_HighCalMag") < GetAmmoCapacity("PB_HighCalMag"),1);
+		TNT1 A 0 A_JumpIf(!FindInventory("PBX_LMGEdited") || !FindInventory("LMGUpgraded") || CountInv("PB_HighCalMag") < GetAmmoCapacity("PB_HighCalMag"),1);
 		fail;
 		TNT1 A 0 {
 			A_SetInventory("LMGUpgraded", 1);
-			A_GiveInventory("PB_LMG", 1);
-			A_SetWeaponTag("PB_LMG","$PBXAddons_LMGUpgrade_Tag");
+			A_GiveInventory("PBX_LMGEdited", 1);
+			A_SetWeaponTag("PBX_LMGEdited","$PBXAddons_LMGUpgrade_Tag2");
 		}
 		Stop;
 	}
