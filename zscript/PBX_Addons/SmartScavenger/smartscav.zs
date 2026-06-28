@@ -60,6 +60,17 @@ class SmartScavAmmoBase : CustomInventory
 			return;
 		}
 	}
+
+	override void Touch(Actor toucher)
+	{
+		super.Touch(toucher);
+		Array<String> tips;
+		tips.Push("$PBXAddons_SmartScav_Tip1");
+		tips.Push("$PBXAddons_SmartScav_Tip2");
+		tips.Push("$PBXAddons_SmartScav_Tip3");
+		tips.Push("$PBXAddons_SmartScav_Tip4");
+		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXAddons_HelpFlags",ePBXAddons_SmartScavTip);
+	}
 }
 
 // SMART CELLS ==========================================================================================

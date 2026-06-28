@@ -3,6 +3,15 @@ AddOptionMenu "PB_AddonOptions"
     Submenu "$PBXAddons_Settings", "PBXAddons_Menu"
 }
 
+AddOptionMenu "PBXCore_Menu"
+{
+    StaticText	"--------- PBX Addons Settings ---------", 1
+    SafeCommand "Enable Every PBX Addons", "resetcvar PBXAddons_SettingsFlags; resetcvar PBXAddons_SmartScavFlags; resetcvar PBXAddons_DMGFeedbackFlags; resetcvar PBXAddons_WeaponUpgradesFlags;"
+    SafeCommand "Reset Addons Tool Tips", "set PBXAddons_HelpFlags 0;"
+    StaticText "$PBXAddons_Version",yellow
+    StaticText " "
+}
+
 OptionMenu "PBXAddons_Menu"
 {
     Title "$PBXAddons_Settings"

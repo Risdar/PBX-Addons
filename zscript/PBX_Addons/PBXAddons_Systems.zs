@@ -31,31 +31,19 @@ enum ePBXAddons_TipFlags{
 
 Class PBXAddons_Handler : eventhandler
 {
-    PlayerPawn pm;
-
 	override void playerentered(playerevent e)
 	{
-        pm = players[e.PlayerNumber].mo;
+        let pm = players[e.PlayerNumber].mo;
 		if(!pm) return;
 
         if (level.MapName == "TITLEMAP") return;
 
-        TryGiveInventory(whatToGive:'PB_backpackreloadItem', diffCheck:false);
-        TryGiveInventory(whatToGive:'PBXAddons_TipsManager', diffCheck:false);
+        PBXCore_Handler.TryGiveInventory(pm,whatToGive:'PB_backpackreloadItem', diffCheck:false);
+        PBXCore_Handler.TryGiveInventory(pm,whatToGive:'PBXAddons_TipsManager', diffCheck:false);
 
 	}
 
-    void TryGiveInventory(name hasInventory = "", name whatToGive = "", int giveAmount = 1, bool diffCheck = true)
-	{
-		// Only give the inventory if the player still doesnt have the item
-		// this way its only given once and wont be given every map change
-		if (pm.CountInv(diffCheck ? hasInventory : whatToGive) < 1) 
-		{
-			pm.GiveInventory(whatToGive, giveAmount);
-		}
-	}
-
-    // Checks if the Ulitmate Visor mod is loaded and disables PBXAddons hit feedback regardless
+    // Checks if the Ulitmate Visor mod is loaded and disables PBXAddons hit feedback
     override void WorldLoaded (WorldEvent e)
     {
         string uvClassName = "UV_HudVisorDraw";
@@ -73,27 +61,9 @@ Class PBXAddons_Handler : eventhandler
 
 class PBXAddons_TipsManager : inventory
 {
-	Default
-	{
-		// These are just some useful values for an inventory token
-		// that make sure it can't be taken away or dropped:
-		inventory.maxamount 1;
-		+INVENTORY.UNDROPPABLE
-		+INVENTORY.UNTOSSABLE
-		+INVENTORY.PERSISTENTPOWER
-	}
-
-	private void SendTipArrayIfNeeded(Array<String> tipStrings, int tipFlag)
-	{
-		if(!PB_HelpNotificationsHandler.CheckTipEvent(tipFlag, CVar.GetCvar("PBXAddons_HelpFlags")))
-		{
-			PB_HelpNotificationsHandler.PB_SendTipArray(tipStrings, "PBXAddons_HelpFlags", tipFlag);
-		}
-	}
-
 	override bool HandlePickup(Inventory item)
 	{
-		string weaponHelpCvar = "PBXWeapons_WeaponHelpFlags";
+		string addonHelpCvar = "PBXAddons_HelpFlags";
 
         switch(item.getClassName())
         {
@@ -105,7 +75,7 @@ class PBXAddons_TipsManager : inventory
                 Array<String> tips;
                 tips.Push("$PBXAddons_SGLEdited_Tip1");
                 tips.Push("$PBXAddons_SGLEdited_Tip2");
-                SendTipArrayIfNeeded(tips, ePBXAddons_SGLUpgradeTip);
+                PBXCore_TipsManager.SendTipArrayIfNeeded(tips,addonHelpCvar,ePBXAddons_SGLUpgradeTip);
             }
             break;
 
@@ -114,7 +84,7 @@ class PBXAddons_TipsManager : inventory
                 Array<String> tips;
                 tips.Push("$PBXAddons_LMGEdited_Tip1");
                 tips.Push("$PBXAddons_LMGEdited_Tip2");
-                SendTipArrayIfNeeded(tips, ePBXAddons_LMGUpgradeTip);
+                PBXCore_TipsManager.SendTipArrayIfNeeded(tips,addonHelpCvar,ePBXAddons_LMGUpgradeTip);
             }
             break;
 
