@@ -43,8 +43,6 @@ Class PBXAddons_Handler : eventhandler
         TryGiveInventory(whatToGive:'PB_backpackreloadItem', diffCheck:false);
         TryGiveInventory(whatToGive:'PBXAddons_TipsManager', diffCheck:false);
 
-        PB_HelpNotificationsHandler.PB_SendTip("$PBXAddons_Version", "PBXCore_ThrowawayFlag", 0 << 0);
-        
 	}
 
     void TryGiveInventory(name hasInventory = "", name whatToGive = "", int giveAmount = 1, bool diffCheck = true)
@@ -111,7 +109,7 @@ class PBXAddons_TipsManager : inventory
             }
             break;
 
-             case 'PBX_LMGEdited':
+            case 'PBX_LMGEdited':
             {
                 Array<String> tips;
                 tips.Push("$PBXAddons_LMGEdited_Tip1");
