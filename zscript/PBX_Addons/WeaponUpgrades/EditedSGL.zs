@@ -89,19 +89,19 @@ class SGL_Upgrade : PB_UpgradeItem
 	}
 	States
 	{
-	Spawn:
-		BSGL A -1;
-		Stop;
+		Spawn:
+			BSGL A -1;
+			Stop;
 
-	Pickup:
-		TNT1 A 0 A_JumpIf(!FindInventory("PBX_SGLEdited") || !FindInventory("SGLUpgraded") || CountInv("PB_RocketAmmo") < GetAmmoCapacity("PB_RocketAmmo"),1);
-		fail;
-		TNT1 A 0 {
-			A_SetInventory("SGLUpgraded", 1);
-			A_GiveInventory("PBX_SGLEdited", 1);
-			A_SetWeaponTag("PBX_SGLEdited","$PBXAddons_SGLUpgrade_Tag2");
-		}
-		Stop;
+		Pickup:
+			TNT1 A 0 A_JumpIf(!FindInventory("PBX_SGLEdited") || !FindInventory("SGLUpgraded") || CountInv("PB_RocketAmmo") < GetAmmoCapacity("PB_RocketAmmo"),1);
+			fail;
+			TNT1 A 0 {
+				A_SetInventory("SGLUpgraded", 1);
+				A_GiveInventory("PBX_SGLEdited", 1);
+				A_SetWeaponTag("PBX_SGLEdited","$PBXAddons_SGLUpgrade_Tag2");
+			}
+			Stop;
 	}
 }
 

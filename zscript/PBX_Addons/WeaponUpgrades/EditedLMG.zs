@@ -20,21 +20,22 @@ class LMG_Upgrade : PB_UpgradeItem
 		Scale 0.52;
 		FloatBobStrength 0.5;
 	}
+	
 	States
 	{
-	Spawn:
-		LMPU A -1;
-		Stop;
+		Spawn:
+			LMPU A -1;
+			Stop;
 
-	Pickup:
-		TNT1 A 0 A_JumpIf(!FindInventory("PBX_LMGEdited") || !FindInventory("LMGUpgraded") || CountInv("PB_HighCalMag") < GetAmmoCapacity("PB_HighCalMag"),1);
-		fail;
-		TNT1 A 0 {
-			A_SetInventory("LMGUpgraded", 1);
-			A_GiveInventory("PBX_LMGEdited", 1);
-			A_SetWeaponTag("PBX_LMGEdited","$PBXAddons_LMGUpgrade_Tag2");
-		}
-		Stop;
+		Pickup:
+			TNT1 A 0 A_JumpIf(!FindInventory("PBX_LMGEdited") || !FindInventory("LMGUpgraded") || CountInv("PB_HighCalMag") < GetAmmoCapacity("PB_HighCalMag"),1);
+			fail;
+			TNT1 A 0 {
+				A_SetInventory("LMGUpgraded", 1);
+				A_GiveInventory("PBX_LMGEdited", 1);
+				A_SetWeaponTag("PBX_LMGEdited","$PBXAddons_LMGUpgrade_Tag2");
+			}
+			Stop;
 	}
 }
 

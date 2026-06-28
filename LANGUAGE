@@ -59,6 +59,18 @@ PBXAddons_LMGUpgrade_Pickup         = "Light Machine Gun Micro Missiles Conversi
 PBXAddons_LMGUpgrade_Tag            = "LMG Upgrade";
 PBXAddons_LMGUpgrade_Tag2           = "Light Machine Gun w/ Micro Missiles Kit";
 
+// HELP TIPS
+PBXAddons_SmartScav_Tip1 = "You just tried picking up a Smart Scavenger item.";
+PBXAddons_SmartScav_Tip2 = "Smart Scavenger counts how many ammo or health you currently have and decides if you have enough space for more.";
+PBXAddons_SmartScav_Tip3 = "If you dont have enough space for a full pickup the Smart Scavenger will split the item and spawn smaller chunks of the item.";
+PBXAddons_SmartScav_Tip4 = "This way you won't waste most of the pickup.";
+
+PBXAddons_SGLEdited_Tip1 = "The Elemental Grenades for the SGL has been locked behind an upgrade.";
+PBXAddons_SGLEdited_Tip2 = "You can find the upgrade on Tier 3 and 4 Upgrade Spawners as well as Tier 3 and 4 Rocket Launcher Spawns.";
+
+PBXAddons_LMGEdited_Tip1 = "The Micro Missiles for the LMG has been locked behind an upgrade.";
+PBXAddons_LMGEdited_Tip2 = "You can find the upgrade on Tier 4 Upgrade Spawners as well as Tier 4 Chaingun Spawns.";
+
 // TOOL TIPS
 // Backpack Reload
 TIP_PBBCKPR_Time    = "How frequently it will check weapons (in Tics, 35 tics = 1 second).";

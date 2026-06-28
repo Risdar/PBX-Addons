@@ -1,11 +1,17 @@
+enum PBXAddons_SmartScavMode{
+	DO_NOTHING,
+	SPAWN_PARTIAL,
+	SPAWN_FULL
+}
+
 class SmartScavAmmoBase : CustomInventory
 {
 	int IsAmmoFull(Actor toucher, class<PB_Ammo> type, int amount)
 	{
-		if (!toucher || !type) return 0;
+		if (!toucher || !type) return DO_NOTHING;
 
 		let ammoDefault = GetDefaultByType(type);
-		if (!ammoDefault) return 0;
+		if (!ammoDefault) return DO_NOTHING;
 
 		let inv = toucher.FindInventory(type);
 		int current = inv ? inv.Amount : 0;
@@ -22,15 +28,15 @@ class SmartScavAmmoBase : CustomInventory
 
 		if (current >= maxCap)
 		{
-			return 0;
+			return DO_NOTHING;
 		}
 
 		if (current + amount > maxCap)
 		{
-			return 1;
+			return SPAWN_PARTIAL;
 		}
 
-		return 2;
+		return SPAWN_FULL;
 	}
 
 	void HandleAmmoTouch(Actor toucher, class<PB_Ammo> type, int amount)
@@ -38,14 +44,14 @@ class SmartScavAmmoBase : CustomInventory
 		if (!toucher || !toucher.player || toucher.health <= 0) return;
 
 		int ammoAmount = IsAmmoFull(toucher, type, amount);
-		if (ammoAmount == 0)
+		if (ammoAmount == DO_NOTHING)
 		{
 			SetStateLabel("DoNothing");
 			return;
 		}
 
 		bNoInteraction = true;
-		if(ammoAmount == 1){
+		if(ammoAmount == SPAWN_PARTIAL){
 			SetStateLabel("SpawnPartial");
 			return;
 		} 

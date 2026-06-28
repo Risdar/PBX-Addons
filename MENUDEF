@@ -17,6 +17,7 @@ OptionMenu "PBXAddons_Menu"
     FlagOption "$PBXAddons_BackpackReload_Enable",       "PBXAddons_SettingsFlags",    "OffOn", 4
     FlagOption "$PBXAddons_WeaponUpgrades_Enable",       "PBXAddons_SettingsFlags",    "OffOn", 5
     SafeCommand "Enable Every PBX Addons", "resetcvar PBXAddons_SettingsFlags; resetcvar PBXAddons_SmartScavFlags; resetcvar PBXAddons_DMGFeedbackFlags; resetcvar PBXAddons_WeaponUpgradesFlags;"
+    SafeCommand "Reset Addons Tool Tips", "set PBXAddons_HelpFlags 0;"
     StaticText " "
     StaticText	"--------- Individual Settings ---------", 1
     Submenu "$PBXAddons_SmartScavSettings", "PBXAddons_SmartScavengerMenu"
@@ -113,7 +114,16 @@ AddOptionMenu "AddonAmmoSpawns" after "PACKT3"
 {
 	FlagOption    "$PBXAddons_SGLUpgrade_Enable",    "PBXAddons_WeaponUpgradesFlags",    "OffOn", 0
 }
+AddOptionMenu "AddonWeaponSpawns" after "LAUT3"
+{
+	FlagOption    "$PBXAddons_SGLUpgrade_Enable",    "PBXAddons_WeaponUpgradesFlags",    "OffOn", 0
+}
+
 AddOptionMenu "AddonAmmoSpawns" after "PACKT4"
+{
+	FlagOption    "$PBXAddons_LMGUpgrade_Enable",    "PBXAddons_WeaponUpgradesFlags",    "OffOn", 1
+}
+AddOptionMenu "AddonWeaponSpawns" after "CHNT4"
 {
 	FlagOption    "$PBXAddons_LMGUpgrade_Enable",    "PBXAddons_WeaponUpgradesFlags",    "OffOn", 1
 }
